@@ -1,13 +1,14 @@
 function partOne(input) {
+    var outPut;
     if(input[0].toUpperCase() == input[input.length - 1].toUpperCase()) {
-        return input.split("").reverse().join("");
+        outPut = input.split("").reverse().join("");
     } else {
         let buf = input.split("");
         buf.shift();
         buf.pop();
-        input = buf.join("");
-        return input;
+        outPut = buf.join("");
     }
+    return outPut;
 }
 console.log(partOne("Triscuit"));
 console.log(partOne("Cracker"));
@@ -53,13 +54,11 @@ function partThree(dateStr) {
     var hours = Math.floor(msTillBDay / (1000 * 60 * 60)) - ((weeks * 7 * 24) + (days * 24));
     var minutes = Math.floor(msTillBDay / (1000 * 60)) - ((weeks * 7 * 24 * 60) + (days * 24 * 60) + (hours * 60));
     var seconds = Math.floor(msTillBDay / 1000) - ((weeks * 7 * 24 * 60 * 60) + (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60));
-    return [weeks, days, hours, minutes, seconds];
+    var outStr = `There are ${weeks} weeks, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds until my next birthday!`;
+    return outStr;
 }
 
-var time = partThree("Jan 20, 2025 00:00:00");
-console.log(
-  `There are ${time[0]} weeks, ${time[1]} days, ${time[2]} hours, ${time[3]} minutes, and ${time[4]} seconds until my next birthday!`
-);
+console.log(partThree("May 23, 2025 00:00:00"));
 
 
 function partFour() {
